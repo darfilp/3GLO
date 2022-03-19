@@ -8,12 +8,9 @@
     "watch": "webpack --watch --mode=development",
     "start": "webpack serve --mode=development --open"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/darfilp/3GLO.git"
-  },
+  "repository": "git+https://github.com/darfilp/3GLO.git",
   "keywords": [],
-  "author": "",
+  "author": "Daria <wwdarcool@yandex.ru>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/darfilp/3GLO/issues"

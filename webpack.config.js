@@ -4,14 +4,14 @@ module.exports = {
     context: path.resolve(__dirname, 'src'),
     entry: './index.js',
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'index_bundle.js'
+        filename: 'js/main.js',
+        path: path.resolve(__dirname, 'dist')
     },
     devServer: {
         hot: true,
         static: {
             directory: './dist',
-            watch: true,
-        },
-    },
-}
+            watch: true
+        }   
+    }
+};
