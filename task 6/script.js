@@ -21,7 +21,6 @@ const clock = () => {
     return days[date.getDay()]
     }
 
-    // определим фразу приветствия в зависимости от местного времени пользователя 
 
     if (hours >= 0 && hours <= 6) {
     message = 'Доброй ночи';
@@ -33,7 +32,6 @@ const clock = () => {
     message = 'Добрый вечер';
     }
 
-    // выполним форматирование времени 
 
     hours = (hours < 10) ? '0' + hours : hours
     minutes = (minutes < 10) ? '0' + minutes : minutes
