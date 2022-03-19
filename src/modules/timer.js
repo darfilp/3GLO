@@ -12,8 +12,6 @@ function timer(deadline) {
         let min = Math.trunc(((dateStop - dateNow) / 1000 / 60) % 60);
         let sec = Math.trunc(((dateStop - dateNow) / 1000) % 60);
 
-
-        console.log(dateStop)
         return {
             timeRemaining,
             h,
