@@ -5,7 +5,6 @@ const modal = () => {
     const content = modal.querySelector('.popup-content');
     let idInterval;
     let count = 0;
-    console.log(document.documentElement.offsetWidth)
 
     const animation = () => {
         count++;
