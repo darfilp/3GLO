@@ -10,10 +10,13 @@ function menu() {
 
     document.addEventListener('click', (e) => {
         if (e.target.closest('.close-btn') || e.target.matches('menu ul li a')) {
+            console.log('1')
             handleMenu();
         } else if (e.target.closest('.menu')) {
+            console.log('2')
             handleMenu();
-         } else if (!(e.target.closest('menu'))) {
+         } else if (!(e.target.closest('menu')) && menu.classList.contains('.menu-active')) {
+             console.log('3')
             handleMenu();
          }
     })
