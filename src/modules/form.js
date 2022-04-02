@@ -8,7 +8,6 @@ function form() {
     const mess = document.querySelector('.mess');
     const formEmail = document.querySelectorAll('.form-email');
 
-    console.log(formEmail)
     formName = [...formName, mess]
 
     formEmail.forEach(item => {
