@@ -15,8 +15,8 @@ function menu() {
         } else if (e.target.closest('.menu')) {
             console.log('2')
             handleMenu();
-         } else if (!(e.target.closest('menu')) && menu.classList.contains('.menu-active')) {
-             console.log('3')
+         } else if (!(e.target.closest('menu')) && menu.classList.contains('active-menu')) {
+            console.log('3')
             handleMenu();
          }
     })
