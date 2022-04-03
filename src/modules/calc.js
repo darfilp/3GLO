@@ -1,4 +1,4 @@
-const calc = (price = 100) => {
+const calc = (price = 200) => {
   const inputNumber = document.querySelectorAll(".calc-block input");
   const calcBlock = document.querySelector(".calc-block");
   const calcType = document.querySelector(".calc-type");
@@ -33,6 +33,7 @@ const calc = (price = 100) => {
     } else {
       totalValue = 0;
     }
+
 
     total.textContent = Math.floor(totalValue);
   };
