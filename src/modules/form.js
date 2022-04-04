@@ -8,7 +8,11 @@ function form() {
     const mess = document.querySelector('.mess');
     const formEmail = document.querySelectorAll('.form-email');
 
-    formName = [...formName, mess]
+    formName = [...formName]
+
+    mess.addEventListener('input', () => {
+        mess.value = mess.value.replace(/[^а-я0-9\s\,\.\!\?\;\:]/gi, '');
+    })
 
     formEmail.forEach(item => {
         item.addEventListener('input', (e) => {
@@ -18,7 +22,7 @@ function form() {
 
     formTel.forEach(item => {
         item.addEventListener('input', (e) => {
-            item.value = item.value.replace(/[^0-9\)\(\-]/gi, '')
+            item.value = item.value.replace(/[^0-9\)\(\+\-]/gi, '')
         });
     })
 
@@ -26,7 +30,7 @@ function form() {
 
     formName.forEach(item => {
         item.addEventListener('input', (e) => {
-        item.value = item.value.replace(/[^а-я\.\-]/gi, '')
+        item.value = item.value.replace(/[^а-я\s]/gi, '')
     })
     })
 

@@ -1,7 +1,8 @@
 const sendForm = ({
-  formID,
-  someElem = []
-}) => {
+    formID,
+    someElem = []
+   }) => {
+
   const form = document.getElementById(formID);
   const allInputs = document.querySelectorAll('input')
   const allSelects = document.querySelectorAll('select')
