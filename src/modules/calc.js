@@ -1,4 +1,4 @@
-const calc = (price = 200) => {
+const calc = (price = 500) => {
   const inputNumber = document.querySelectorAll(".calc-block input");
   const calcBlock = document.querySelector(".calc-block");
   const calcType = document.querySelector(".calc-type");
