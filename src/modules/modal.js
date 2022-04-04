@@ -1,3 +1,5 @@
+import {animate} from "./helper"
+
 const modal = () => {
     const btns = document.querySelectorAll('.popup-btn');
     const modal = document.querySelector('.popup');
@@ -16,19 +18,28 @@ const modal = () => {
             cancelAnimationFrame(idInterval)
         }
     };
-    
+
     btns.forEach(btn => {
         btn.addEventListener('click', () => {
-            modal.style.display = 'flex';
-            if (document.documentElement.offsetWidth <= 768) {
-                content.style.left = 38 + '%';
-                modal.style.display = 'flex';
-            } else {
-                content.style.left = 30 + '%';
-                modal.style.display = 'flex';
-                animation()
-            }
-            
+            //modal.style.display = 'flex';
+            // if (document.documentElement.offsetWidth <= 768) {
+            //     content.style.left = 38 + '%';
+            //     modal.style.display = 'flex';
+            // } else {
+            //     content.style.left = 30 + '%';
+            //     modal.style.display = 'flex';
+            //     animation()
+            // }
+            animate({
+                duration: 1000,
+                timing(timeFraction) {
+                    return Math.pow(timeFraction, 2);
+                },
+                draw(progress) {
+                    modal.style.display = 'flex';
+                    content.style.left = progress * 38 + '%';
+                }
+            });
         })
     });
 
