@@ -7,7 +7,7 @@ import slider from "./modules/slider";
 import calc from "./modules/calc"
 
 
-//price
+
 
 tabs();
 timer('2022-04-16');
@@ -16,4 +16,5 @@ modal();
 form();
 slider();
 calc(100);
+
 
