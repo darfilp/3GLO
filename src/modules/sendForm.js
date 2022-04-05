@@ -1,3 +1,6 @@
+let flag = true;
+
+
 const sendForm = ({
     formID,
     someElem = []
@@ -12,8 +15,26 @@ const sendForm = ({
   const successText = 'Спасибо!Наш менеджер с вами свяжется.'
 
   const validate = (list) => {
-    let success = true
-    return success
+    let success = true; 
+    
+    list.forEach(input => {
+
+      validateInputs(input);
+
+      if (flag) {
+        success = false;
+      }
+    });
+    return success;
+  };
+
+    const validateInputs = (input) => {
+    if ((input.name === "user_name" && input.value.length > 2)
+        || (input.name === "user_phone" && (input.value.length > 13))) {
+        flag = false;          
+    } else {
+        statusBlock.textContent = errorText;
+    }
   };
 
   const sendData = (data) => {
@@ -95,7 +116,7 @@ const sendForm = ({
       event.preventDefault()
 
       submitForm()
-      console.log('Отправлено');
+      console.log('Данные обрабатываются...');
     })
   } catch (error) {
     console.log(error.message);
