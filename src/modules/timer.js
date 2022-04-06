@@ -1,50 +1,61 @@
-function timer(deadline) {
-    const timerHours = document.getElementById('timer-hours');
-    const timerMinutes = document.getElementById('timer-minutes');
-    const timerSeconds = document.getElementById('timer-seconds');
+const timer = function(deadline){
+  const timerHours = document.getElementById("timer-hours");
+  const timerMinutes = document.getElementById("timer-minutes");
+  const timerSeconds = document.getElementById("timer-seconds");
+  const timerAction = document.getElementsByClassName("timer-action")[0];
 
+  
+  const getTimeRemaining = () => {
+    let dateStop = new Date(deadline).getTime();
+    let dateNow = new Date().getTime();
+    let timeRemaning = (dateStop - dateNow)/1000;
+    let hours = Math.floor(timeRemaning/3600);
+    let minutes = Math.floor((timeRemaning/60) % 60);
+    let seconds = Math.floor(timeRemaning % 60);
 
-    const getTimeRemaining = () => {
-        const dateStop = Date.parse(deadline);
-        const dateNow = Date.parse(new Date());
-        const timeRemaining = dateStop - dateNow;
-        let h = Math.trunc((dateStop - dateNow) / 1000 / 60 / 60);
-        let min = Math.trunc(((dateStop - dateNow) / 1000 / 60) % 60);
-        let sec = Math.trunc(((dateStop - dateNow) / 1000) % 60);
+    if(timeRemaning < 0){
+      timeRemaning = 0;
+      hours = 0;
+      minutes = 0;
+      seconds = 0;
 
-        return {
-            timeRemaining,
-            h,
-            min,
-            sec,
-        }
-    };
-
-    const checkDate = (number) => {
-        if (number < 10) {
-            return `0${number}` 
-        } else {
-            return number
-        } 
+      timerAction.textContent = "Акция закончилась...";
     }
 
-    const updateClock = () => {
-        const getTime = getTimeRemaining(deadline);
-        timerHours.textContent = checkDate(getTime.h);
-        timerMinutes.textContent = checkDate(getTime.min);
-        timerSeconds.textContent = checkDate(getTime.sec);
+    return { timeRemaning, hours, minutes, seconds };
+  };
 
-        if (getTime.timeRemaining > 0) {
-            setInterval(updateClock, 1000)
-        } else {
-            timerHours.textContent = '00';
-            timerMinutes.textContent = '00';
-            timerSeconds.textContent = '00';
-        }
 
+  const updateClock = () => {
+    let getTime = getTimeRemaining();
+
+    if(getTime.hours < 10){
+      timerHours.textContent = "0"+getTime.hours;
+    }else{
+      timerHours.textContent = getTime.hours;
     }
 
-    updateClock();
-};
+    if(getTime.minutes < 10){
+      timerMinutes.textContent = "0"+getTime.minutes;
+    }else{
+      timerMinutes.textContent = getTime.minutes;
+    }
 
-export default timer
+    if(getTime.seconds < 10){
+      timerSeconds.textContent = "0"+getTime.seconds;
+    }else{
+      timerSeconds.textContent = getTime.seconds;
+    }
+
+
+    if(getTime.timeRemaning > 0) {
+      setTimeout(updateClock, 1000);
+    }
+
+  };
+
+  updateClock();
+
+}; 
+
+export default timer;
