@@ -11,7 +11,7 @@ const modal = () => {
         count++;
         idInterval = requestAnimationFrame(animation);
         if (count <= 40) {
-            console.log(content.style.left)
+            //console.log(content.style.left)
             content.style.left = count + '%';
         } else {
             count = 0;

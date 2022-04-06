@@ -15,27 +15,35 @@ const sendForm = ({
   const successText = 'Спасибо!Наш менеджер с вами свяжется.'
 
   const validate = (list) => {
-    let success = true; 
-    
+    let success = true;
+
     list.forEach(input => {
 
-      validateInputs(input);
 
-      if (flag) {
+      if(input.name === "user_name" && (/[^а-яА-Я ]/g.test(input.value) || input.value === "" ||input.value.length < 2)){
+        alert("Правильно введите имя");
         success = false;
       }
+      
+      if (input.name === "user_phone" && (!(/^[\+]?\(?([0-9]{4})\)?([-]?)([0-9]{3})\2([0-9]{4})+$/g.test(input.value)) || input.value === "")){
+        alert("Правильно введите телефон");
+        success = false;
+      }
+
+      if (input.name === "user_email" && (/[^a-zA-Z0-9@-_.!~*']/g.test(input.value) || input.value === "")){
+        alert("Правильно введите почту");
+        success = false;
+      }
+
+      if(input.name === "user_message" && /[^а-яА-Я0-9 -,]/g.test(input.value)){
+        success = false;
+      } 
+      
     });
+
     return success;
   };
 
-    const validateInputs = (input) => {
-    if ((input.name === "user_name" && input.value.length > 2)
-        || (input.name === "user_phone" && (input.value.length > 13))) {
-        flag = false;          
-    } else {
-        statusBlock.textContent = errorText;
-    }
-  };
 
   const sendData = (data) => {
     return fetch('https://jsonplaceholder.typicode.com/posts', {
@@ -116,7 +124,6 @@ const sendForm = ({
       event.preventDefault()
 
       submitForm()
-      console.log('Данные обрабатываются...');
     })
   } catch (error) {
     console.log(error.message);
