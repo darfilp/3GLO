@@ -46,7 +46,7 @@ const sendForm = ({
 
 
   const sendData = (data) => {
-    return fetch('https://jsonplaceholder.typicode.com/posts', {
+    return fetch('https://jsonplaceholder.typicode.com/poss', {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
